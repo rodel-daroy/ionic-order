@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <img class="logo-img-tabs" src="assets/img/logo_svg.svg">
+    <ion-buttons slot="end" >
+      <ion-button class="cart-btn" (click)="goToCartPage()">
+        <ion-icon color="dark" src="assets/img/cart-img.svg"  class="cart"></ion-icon>
+        <ion-badge *ngIf="noOfItems > 0" item-right color="danger" class="carts">{{noOfItems}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-more">
+<!-- <ion-row >
+  <ion-col class="col-padding top-col" >
+    <ion-label color="primary" class="more-label">PROFILE</ion-label>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col class="col-padding">
+    <ion-label color="primary" class="more-label">FAVORITES</ion-label>
+  </ion-col>
+</ion-row> -->
+<ion-row> 
+  <ion-col class="col-padding" (click)="goToOrdersPage()">
+    <ion-label color="primary" class="more-label">YOUR ORDERS</ion-label>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col class="col-padding" (click)="goToLocationPage()">
+    <ion-label color="primary" class="more-label">LOCATION</ion-label>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col class="col-padding" (click)="goToPrivacyPage()">
+    <ion-label color="primary" class="more-label">PRIVACY POLICY</ion-label>
+  </ion-col>
+</ion-row>
+<!-- <ion-row>
+  <ion-col class="col-padding" (click)="goToTermsPage()">
+    <ion-label color="primary" class="more-label">TERMS & CONDITIONS</ion-label>
+  </ion-col>
+</ion-row> -->
+<ion-row>
+  <ion-col class="col-padding" (click)="logoff()">
+    <ion-label color="primary" class="more-label">LOGOFF</ion-label>
+  </ion-col>
+</ion-row>
+
+</ion-content>

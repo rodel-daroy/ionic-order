@@ -1,0 +1,13 @@
+{
+  "appId": "com.orderdirect.sushihouse",
+  "appName": "Order Direct User App",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 3000
+    }
+  },
+  "cordova": {}
+}

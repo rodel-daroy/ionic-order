@@ -1,0 +1,175 @@
+<ion-header class="header-product-detail">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/category"></ion-back-button>
+    </ion-buttons>
+    <ion-label color="primary" class="header-label">ORDER</ion-label>
+    <ion-buttons slot="end">
+      <ion-button class="cart-btn" (click)="goToCartPage()">
+        <ion-icon
+          color="dark"
+          src="assets/img/cart-img.svg"
+          class="cart"
+        ></ion-icon>
+        <ion-badge *ngIf="noOfItems > 0" item-right color="danger" class="carts"
+          >{{noOfItems}}</ion-badge
+        >
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-product-detail">
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size="12" class="ion-no-padding">
+        <ion-img class="productImage" [src]="productDetails?.thumb"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="8" class="product-col">
+        <div>
+          <ion-label class="product-label">{{productDetails.title}}</ion-label>
+        </div>
+        <div>
+          <ion-label>{{productDetails.description}}</ion-label>
+        </div>
+      </ion-col>
+     <!--  <ion-col size="4" class="count-col">
+        <div class="count" >
+          <span class="item-count item-count-decrease" (click)="decreaseCartItem(i)">
+            -
+          </span>
+          <span class="show-count"> {{productCount}}
+          </span>
+          <span class="item-count item-count-increase" (click)="increaseProductCount()">
+            +
+          </span>
+        </div>
+        
+      </ion-col> -->
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        {{productDetails?.price?.value}}
+      </ion-col>
+    </ion-row>
+    <!--  <ion-row>
+      <ion-col size = "12">
+        <ion-list>
+          
+            <ion-list-header>
+              <ion-label><h2>Choice of Size</h2></ion-label>
+            </ion-list-header>
+            <ion-radio-group>
+              <ion-item *ngFor="let price of productDetails?.price">
+                <ion-label *ngIf="price.specialPrice != undefined"><del>{{currency}}{{price?.value}}</del>{{price?.pname}} </ion-label>
+                <ion-label *ngIf="price.specialPrice != undefined" slot="end">{{currency}}{{price?.value}}</ion-label>
+                <ion-label *ngIf="price.specialPrice == undefined">{{price?.pname}}  </ion-label>
+                <ion-label *ngIf="price.specialPrice == undefined" slot="end">{{currency}}{{price?.value}}</ion-label>
+                <ion-radio color ="dark" class="checked" slot="start" (ionSelect)="onSelectSize(price)"></ion-radio>
+              </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-col>
+    </ion-row> -->
+
+    <ion-list class="size-list">
+      <ion-list-header class="product-label" text-center>
+        <b>SIZE AND PRICES</b>
+      </ion-list-header>
+      <ion-radio-group (ionChange)="onSelectSize($event)">
+        <ion-item
+          *ngFor="let price of productDetails?.price"
+          class="size-list-item"
+        >
+          <ion-radio
+            mode="md"
+            class="radio-size"
+            [value]="price"
+            color="primary"
+          ></ion-radio>
+
+          <ion-label class="list-label">{{price?.pname}}</ion-label>
+
+          <ion-label *ngIf="price.specialPrice != undefined">
+            <del>{{currency}}{{price?.value}}</del>
+            {{currency}}{{price?.specialPrice}}</ion-label
+          >
+          <ion-label *ngIf="price.specialPrice == undefined"
+            >{{currency}}{{price?.value}}</ion-label
+          >
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-list
+      *ngIf="productDetails.extraOptions != undefined"
+      class="extra-list"
+    >
+      <ion-list-header class="product-label" text-center>Add extra choice</ion-list-header>
+        <ion-item *ngFor="let option of productDetails.extraOptions; let i= index" class="list-item">
+          <ion-checkbox 
+            (ionChange)="onCheckExtraIngredients(option, $event)"
+            class="choice-toggle"
+            color="primary"
+          ></ion-checkbox >
+          <ion-label class="list-label">{{option.name}} </ion-label>
+          <ion-label class="list-label">{{currency}}{{option.value}}</ion-label>
+        </ion-item>
+      
+    </ion-list>
+
+    <ion-list
+    *ngFor ="let menu of productDetails.menuSelections; let j= index" 
+    class="extra-list"
+    
+  >
+    <ion-list-header class="product-label" text-center>{{menu.displayName}}</ion-list-header>
+    <ion-radio-group *ngIf = "menu.selectionType === 'single'" (ionChange)="onSelectSize($event)">
+      <ion-item *ngFor="let option of menu.items; let i= index" class="list-item">
+        <ion-radio
+            mode="md"
+            class="radio-size"
+            [value]="price"
+            color="primary"
+          ></ion-radio>
+          <ion-label class="list-label">{{option.name}} </ion-label>
+          <ion-label>{{currency}}{{option?.price}}</ion-label>
+      </ion-item>
+    </ion-radio-group>
+    <ion-list *ngIf="menu.selectionType ==='multiple'">
+      <ion-item *ngFor="let option of menu.items; let i= index" class="list-item">
+        <ion-checkbox 
+        *ngIf = "menu.selectionType === 'multiple'"
+          (ionChange)="onCheckMultipleSelect(option, menu.displayName)"
+          class="choice-toggle"
+          color="primary"
+        ></ion-checkbox >
+        <ion-label class="list-label">{{option.name}} </ion-label>
+        <ion-label>{{currency}}{{option?.price}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-list>
+    
+    <ion-item>
+      <ion-label class="product-label" position="floating">SPECIAL INSTRUCTIONS</ion-label>
+      <ion-textarea maxlength=80 [(ngModel)]="specialInstruction"></ion-textarea>
+    </ion-item>   
+
+    <ion-row class="count-full">
+      <ion-col size="12">
+          <ion-button
+            color="primary"
+            expand="block"
+            strong="true"
+            size="large"
+            class="btn-lg block"
+            (click)="addToCart(productDetails._id)"
+          >
+            ADD TO ORDER
+          </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/cart"></ion-back-button>
+    </ion-buttons>
+    <img class="logo-img-only-back" src="assets/img/logo_svg.svg" />
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding page-address-list">
+  <h1 class="main-title">DELIVERY</h1>
+ 
+  <div class = "form-content">
+    <div>
+      <ion-item class="add-address" (click)="addAddress()"
+        >Add New Address
+        <ion-icon name="add"></ion-icon>
+      </ion-item>
+    </div>
+    <!--saved address list-->
+    <ion-radio-group>
+      <ion-row
+        class="address-row"
+        *ngFor="let address of addressList; let i = index "
+      >
+        <ion-col size="8">
+          <ion-list class="address-radio">
+            <ion-radio-group (ionChange)="selectAddress(address)">
+              <ion-item>
+                <ion-label>
+                  <p class="show-address">{{address?.name}}</p>
+                  <p class="show-address">{{address?.area}}</p>
+                  <p class="show-address">{{address?.city}}</p>
+                  <p class="show-address">{{address?.pincode}}</p>
+                  <p class="show-address">{{address?.mobileNo}}</p>
+                </ion-label>
+                <ion-radio [value]="address"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button
+            class="delete-btn edit"
+            fill="clear"
+            (click)="editAdress(address._id)"
+          >
+            <ion-icon name="create" text-right></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button
+            class="delete-btn"
+            fill="clear"
+            (click)="deleteAdress(address._id,i)"
+          >
+            <ion-icon name="trash" text-right></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-radio-group>
+  
+    <ion-row>
+      <ion-col size="12">
+        <ion-button color="primary" expand="block" size="large" class="btn-lg block" (click)="checkOut()">
+          CHECKOUT
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

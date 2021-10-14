@@ -1,0 +1,42 @@
+
+.page-order-details {
+    .items-list {
+        .orders-item {
+          padding: 0px !important;
+
+            .item-name{
+                font-size: 14px;
+                margin-bottom: 5px;  
+                margin-bottom: 5px;
+            } 
+            .item-price {
+                font-weight: 700;
+                color: var(--ion-color-primary);
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+            .item-quantity {
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 20px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+              }
+      
+        }
+
+    }
+
+    .bill-detail{
+        padding: 0px 10px 0px 10px;
+        font-size: 16px;
+        font-weight: 400;
+        span {
+            float: right;
+          }
+      }
+
+      .details{
+          padding-left: 10px;
+      }
+}

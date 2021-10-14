@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "185370375524",
+    "firebase_url": "https://sushi-house-2.firebaseio.com",
+    "project_id": "sushi-house-2",
+    "storage_bucket": "sushi-house-2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185370375524:android:c3d4dc989c54c182e8f671",
+        "android_client_info": {
+          "package_name": "com.orderdirect.sushihouse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185370375524-87j7l3tu0tgngqakt1oa86obruoikcc5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrhokJSJAD3fEpLbtfpc-RpCXmpD6bVxg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185370375524-87j7l3tu0tgngqakt1oa86obruoikcc5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "185370375524-sc6h18dml48sc8b38ava2hjn0usa1u42.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.orderdirect.sushihouse"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

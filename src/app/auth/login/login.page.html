@@ -1,0 +1,39 @@
+<ion-content scrollX="false" scrollY="false">
+  <div class="login-wrapper">
+    <div class="btn-wrapper">
+      <ion-button color="light" mode="ios" expand="full" class="login-btn" (click)="orderAsGuest()">
+        Order as our Guest
+      </ion-button>
+      <p class="p-text signin-text">For a better experience sign in</p>
+      <!-- <ion-button
+        color="dark"
+        mode="ios"
+        expand="full"
+        class="login-btn apple-btn"
+        (click)="openAppleSignIn()" 
+        *ngIf="showAppleSignIn"
+      >
+        <ion-icon slot="start" name="logo-apple" color="light"></ion-icon>
+        Sign In with Apple
+      </ion-button>
+      <ion-button color="darkblue" mode="ios" expand="full" class="login-btn">
+        <ion-icon name="logo-facebook" slot="start" color="light"></ion-icon>
+        Sign in with Facebook
+      </ion-button>
+      <ion-button color="light" mode="ios" expand="full" class="login-btn">
+        <ion-icon name="logo-google" slot="start" color="dark"></ion-icon>
+        Sign in with google
+      </ion-button> -->
+      <ion-button
+        color="darkred"
+        mode="ios"
+        expand="full"
+        class="login-btn"
+        (click)="sigInwithEmail()"
+      >
+        <ion-icon name="mail-open-sharp" slot="start" color="light"></ion-icon>
+        Sign in with e-mail
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

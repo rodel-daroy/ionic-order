@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="orders"></ion-back-button>
+    </ion-buttons>
+    <ion-title>ORDER DETAILS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-order-details">
+  <div class="items-list">
+    <ion-card class="orders-item" *ngFor="let product of orderDetails?.cart">
+      <ion-row>
+        <ion-col size="4">
+          <img class="product-image" src="{{product?.item?.thumb}}">
+        </ion-col>
+        <ion-col size="5">
+          <p class="item-name">
+            <strong>{{product?.item?.title}}</strong>
+          </p>
+          <p class="item-price">Price:{{currency}}{{product?.itemTotalPrice | number:'.2-2'}}</p>
+          <p class="item-quantity">Quantity: {{product?.item?.itemQunatity}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+  <div class="details">
+    <h4>Order Details</h4>
+    <p class="bill-detail">Order Id:
+      <span class="data">{{orderDetails?.orderId}}</span>
+    </p>
+    <p class="bill-detail" >Order date:
+      <span class="data"><b>{{orderDetails?.createdAt | date}}</b></span>
+    </p>
+    <p class="bill-detail">
+      Amount Paid: 
+      <span><b>{{currency}}{{orderDetails?.grandTotal | number:'.2-2'}}</b></span>
+    </p>
+    <p class="bill-detail">Paid Through:&nbsp;
+      <span class="pay"> {{orderDetails?.paymentType}}</span>
+    </p>
+  </div>
+  <!-- rate-button -->
+  <!--button-->
+
+</ion-content>

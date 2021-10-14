@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/cart/address-list"></ion-back-button>
+    </ion-buttons>
+    <img class="logo-img-only-back" src="assets/img/logo_svg.svg" />
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding page-address">
+  <h1 class="main-title">DELIVERY</h1>
+  <h4 class="sub-title">ADD NEW ADDRESS</h4>
+  
+  <div class="map-wrapper">
+    <div id="map" #map></div>
+  </div>
+  <h5 *ngIf= "address.googleAddress"><ion-icon name="pin-sharp"></ion-icon> {{address.googleAddress}}</h5>
+
+  <form (ngSubmit)="onSubmitAddress()" #f="ngForm">
+    <ion-list class="form-data" >
+        <ion-item class="form-item">
+          <ion-input lines="none" type="text" placeholder="Name" name="name" id="name" [(ngModel)]="address.name"
+            required></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-input lines="none" type="text" placeholder="Street address" name="streetaddress" id="streetAddress" [(ngModel)]="address.streetAddress"
+            required></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-input lines="none" type="text" placeholder="Apt Number/House Number" name="aptNo" id="aptNo" [(ngModel)]="address.aptNo"
+            ></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-input lines="none" type="text" placeholder="City/State" name="city" id="city" [(ngModel)]="address.city"
+            required></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-input lines="none" type="number" placeholder="Zipcode" name="pincode" id="pincode"
+            [(ngModel)]="address.pincode" required></ion-input>
+        </ion-item>
+        
+        <!-- Add Address -->
+
+        <ion-item class="form-item">
+          <ion-input lines="none" type="number" name="mobileNo" id="mobileNo" [(ngModel)]="address.mobileNo"
+            placeholder="Contact Number"></ion-input>
+        </ion-item>
+        
+      <!--   <ion-item class="form-item sub-address address-textarea">
+          <ion-textarea lines="none" rows="6" placeholder="Address" name="address" id="address"
+            [(ngModel)]="address.address" required></ion-textarea>
+        </ion-item>
+       -->
+      <!-- <ion-item class="full-address">
+        <ion-textarea rows="4" placeholder="{{'Address' | translate}}" name="address" id="address"></ion-textarea>
+      </ion-item> -->
+    </ion-list>
+    <ion-row class="buttons">
+      <ion-col>
+        <ion-button color="primary" expand="block" size="large" class="btn-lg block" type="submit" [disabled]="!f.valid" *ngIf="addressId==undefined">
+          &nbsp;&nbsp;
+          Add Address</ion-button>
+          <ion-button color="primary" expand="block" size="large" class="btn-lg block" type="submit" [disabled]="!f.valid" *ngIf="addressId!=undefined">
+            &nbsp;&nbsp;
+            Update Address</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+</ion-content>

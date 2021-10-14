@@ -1,0 +1,53 @@
+<ion-header class="header-product-list">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/category"></ion-back-button>
+    </ion-buttons>
+    <ion-label color="primary" class="header-label">ORDER</ion-label>
+    <ion-buttons slot="end">
+      <ion-button class="cart-btn" (click)="goToCartPage()">
+        <ion-icon
+          color="dark"
+          src="assets/img/cart-img.svg"
+          class="cart"
+        ></ion-icon>
+        <ion-badge *ngIf="noOfItems > 0" item-right color="danger" class="carts"
+          >{{noOfItems}}</ion-badge
+        >
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-product-list">
+  <ion-text class="text-ion">
+    <ion-label class="order-head" color="primary">{{categoryName}}</ion-label
+    ><br />
+  </ion-text>
+  <ion-grid>
+    <ion-row class="categories">
+      <ion-col
+        size="6"
+        *ngFor="let item of itemsCopy"
+        (click)="navigateTo(item._id)"
+        class="list-col"
+      >
+          <ion-img [src]="item?.thumb"></ion-img>
+          <ion-label class="title"
+            ><b>{{item?.title}}</b
+            >&nbsp;&nbsp;{{currency}}{{item?.price[0].value}}</ion-label
+          >
+      </ion-col>
+      <ion-col
+        size="6"
+        *ngFor="let item of outOfStockItems"
+        class="list-col"
+      >
+      <ion-img [src]="item?.thumb" class="out-of-stock-image"></ion-img>
+      <ion-label class="title">
+        <b>{{item?.title}}</b>&nbsp;&nbsp;{{currency}}{{item?.price[0].value}}
+      </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

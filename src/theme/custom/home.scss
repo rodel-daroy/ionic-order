@@ -1,0 +1,112 @@
+.page-home {
+    span {
+        position: static;
+      }
+      
+      .favorites {
+        flex-wrap: wrap;
+        h2 {
+          margin-top: -12px;
+          font-size: 2.7rem;
+          color: rgba(66, 66, 66, 0.87);
+          font-weight: 500;
+        }
+        ion-img {
+          display: inline-block;
+          height: 120px;
+          width: 100%;
+          border: 1px solid black;
+          position: relative;
+          background-position: center center;
+          object-fit: cover;
+        }
+        .text-over-img {
+          color: #fff;
+          font-size: 18px;
+          padding: 5px;
+          background-color: rgba(119, 119, 119, 0.6);
+          position: relative;
+          width: 100%;
+          margin: -35px 0px 0px 0px;
+          text-align: center;
+        }
+      }
+      
+      .fav-col {
+        --ion-grid-column-padding: 8px;
+      }
+      
+      .fav-heading-col {
+        padding-left: 10px;
+        padding-bottom: 0px;
+        p {
+          margin-top: 8px;
+          margin-bottom: 0;
+          font-weight: 500;
+          color: var(--ion-color-primary);
+        }
+      }
+      
+      .parent {
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+      
+      .backimage {
+        position: relative;
+        filter: brightness(95%);
+        top: 0;
+        left: 0;
+      }
+
+      .backimage::part(image){
+        filter: brightness(90%);
+      }
+      
+      .pickupdel-title {
+        position: absolute;
+        top: 20%;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .orderbtnh2 {
+        position: relative;
+        color: white;
+        margin: 3px 0px 5px 0px;
+        display: flex;
+        justify-content: center;
+        font-size: 22px;
+        font-weight: 600;
+      }
+      
+      .startorder-btn {
+        position: absolute;
+      
+        top: 60%;
+        border: 100px solid white;
+        opacity: 0.916;
+        fill: transparent;
+        border-radius: 8px;
+        border-width: 1px;
+        margin: 0px !important;
+        --ion-grid-column-padding: 0px;
+      }
+      .pickup-text {
+        font-size: 2.5em;
+        color: #ffffff;
+        font-weight: 300;
+      }
+      .start-share-text {
+        font-size: 2.5em;
+        color: #ffffff;
+        font-weight: 300;
+      }
+      
+      .btn-row {
+        display: flex;
+        justify-content: center;
+      }
+      
+}

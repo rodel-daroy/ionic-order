@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <img class="logo-img-thanks" src="assets/img/logo_svg.svg">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="page-thankyou">
+  <ion-row>
+    <ion-col size=3></ion-col>
+    <ion-col class="ion-text-center ion-margin-vertical ordertype-col" size="6">
+      <div>
+        <img src="assets/img/thankyou-page-icon.png" />
+      </div>
+    </ion-col>
+    <ion-col size=3></ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-12 style="--ion-grid-column-padding :19px;">
+      <div class="thanks">
+        <h2>THANK YOU FOR ORDERING</h2>
+        <p>SIT BACK AND RELAX, YOUR ORDER IS BEING PREPARED</p>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-button expand="block" class="continue-btn" type="submit" (click)="navigateHome()">Shop more</ion-button>
+  <ion-button expand="block" class="continue-btn" (click)="navigateToMyOrders()">My Orders</ion-button>
+
+</ion-content> 
+
+

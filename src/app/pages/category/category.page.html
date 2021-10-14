@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <img class="logo-img-tabs" src="assets/img/logo_svg.svg" />
+    <ion-buttons slot="end">
+      <ion-button class="cart-btn" (click)="goToCartPage()">
+        <ion-icon
+          color="dark"
+          src="assets/img/cart-img.svg"
+          class="cart"
+        ></ion-icon>
+        <ion-badge *ngIf="noOfItemsInCart > 0" color="danger" class="carts"
+          >{{noOfItemsInCart}}</ion-badge
+        >
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-category">
+  <ion-text class="text-ion">
+    <ion-label class="order-head" color="primary">EXPLORE OUR</ion-label><br />
+    <ion-label class="order-head" color="primary">DELICIOUS MENU</ion-label>
+  </ion-text>
+  <ion-grid>
+    <ion-row class="categories">
+      <ion-col
+        size="6"
+        *ngFor="let category of categories"
+        (click)="navigateTo(category._id, category.title)"
+        class="category-col"
+        text-center
+      >
+        <ion-img [src]="category?.thumb"></ion-img>
+        <ion-label class="title">{{category?.title}}</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

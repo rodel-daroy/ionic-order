@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <img class="logo-img-no-tools" src="assets/img/logo_svg.svg" />
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-select-restaurant">
+  <ion-card class="orders-item" *ngFor="let location of restaurants">
+    <ion-grid class="ion-grid">
+      <ion-row>
+        <ion-col class="ion-col-top">
+          <p class="item-name">
+            <strong>{{location?.name}}</strong>
+          </p>
+          <p class="item-price">{{location.address}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row style="border-bottom: transparent">
+        <ion-col>
+          <p>Open:</p>
+          <p class="address-text">
+            <ion-icon name="time" color="primary"></ion-icon>
+            {{openTime}} -
+            <ion-icon name="time" color="primary"></ion-icon>
+            {{closeTime}}
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row style="border-bottom: transparent">
+        <ion-col>
+          <ion-button color="primary" type="button" routerLink="/app/tabs/home/" (click)="selectRestaurant(location.id)"
+            >Select</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>

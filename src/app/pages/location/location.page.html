@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/more"></ion-back-button>
+    </ion-buttons>
+    <img class="logo-img-only-back" src="assets/img/logo_svg.svg" />
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding page-location">
+  <h1 class="main-title">LOCATION</h1>
+  <div class="map-wrapper">
+    <div id="map" #map></div>
+  </div>
+
+  <p class="address-text">
+    <ion-icon name="pin" color="primary"></ion-icon>
+    {{businessInfo.address}}
+  </p>
+  <p class="address-text">
+    <ion-icon name="call" color="primary"></ion-icon>
+    {{businessInfo.phoneNo}}
+  </p>
+  <p class="address-text">
+    <ion-icon name="time" color="primary"></ion-icon>
+    {{businessInfo.openTime}} -
+    <ion-icon name="time" color="primary"></ion-icon>
+    {{businessInfo.closeTime}}
+  </p>
+  <p class="address-text"></p>
+</ion-content>

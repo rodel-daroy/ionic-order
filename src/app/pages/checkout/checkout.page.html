@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/cart"></ion-back-button>
+    </ion-buttons>
+    <img class="logo-img-only-back" src="assets/img/logo_svg.svg">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page-checkout">
+  <div radio-group class="radio-list">
+    <section class="payment">
+
+      <ion-card class="welcome-card">
+        <ion-img src="assets/img/stripe.png"></ion-img>
+        <ion-card-header>
+          <ion-card-subtitle></ion-card-subtitle>
+          <ion-card-title>Total Payment - {{currency}}{{orderInfo.grandTotal}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <form action="/" method="post" id="payment-form">
+            <div class="form-row">
+              <div id="card-element"> <!-- a Stripe Element will be inserted here. --> </div>
+              <!-- Used to display Element errors -->
+              <div id="card-errors" role="alert"></div>
+            </div>
+            <ion-button type="submit" color="success" expand="full" size="large" class="btn-lg">Make Payment</ion-button>
+          </form>
+          <ion-img class="powered-by-stripe-image" src="assets/img/poweredByStripe.png"></ion-img>
+        </ion-card-content>
+      </ion-card>
+
+     <!--  <ion-list *ngIf="stripeCardList.length >0">
+        <ion-list-header>
+         Saved Card List
+        </ion-list-header>
+        <ion-radio-group>
+          <ion-row class="card-row" *ngFor="let card of stripeCardList ; let i = index ">
+            <ion-col size="10">
+              <ion-item>
+                <ion-label>
+                  <p>{{card?.lastFourDigit}}</p>
+                </ion-label>
+                <ion-radio (ionSelect)="selectedCard(i)"></ion-radio>
+              </ion-item>
+            </ion-col>
+            <ion-col size="2">
+              <button ion-button class="delete-btn" (click)="onDeleteCard(i)">
+                <ion-icon name="trash" slot="end"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-radio-group>
+        <div *ngIf="isCardSelected">
+          <ion-input class="cvv-input" type="number" [(ngModel)]="cvc" placeholder="Enter CVC"></ion-input>
+        </div>
+      </ion-list>
+      <ion-item class="check-item">
+        <ion-label>Save My Card Details</ion-label>
+        <ion-checkbox color="primary" [(ngModel)]="isSaveCard" checked="false" (ionChange)="onSaveCard()"></ion-checkbox>
+      </ion-item>
+ -->
+    <!-- <ion-item class="check-item">
+      <ion-label> Use New Card </ion-label>
+      <ion-checkbox color="dark" [(ngModel)]="newCardSelect" checked="false"></ion-checkbox>
+    </ion-item> -->
+    <!-- <form class="form-data" #f="ngForm" (ngSubmit)="checkout(f)" *ngIf="newCardSelect">
+      <ion-item>
+        <ion-input type="text" pattern="([0-9]{16})" ngModel name="cardNumber" id="cardNumber" placeholder="Card Number" maxlength="16" #cardCtrl="ngModel" required></ion-input>
+        <ion-icon name="card" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item *ngIf="!cardCtrl.valid && cardCtrl.touched" lines="none">
+              <ion-label>
+                Should be a valid Card Number.
+              </ion-label>
+      </ion-item>
+      <ion-row>
+        <ion-col size="3">
+          <ion-item>
+            <ion-input type="text" ngModel name="month" id="month" placeholder="MM" maxlength="2" [(ngModel)]=cardInfo.expiryMonth
+              required></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <ion-item>
+            <ion-input type="text" name="year" id="year" maxlength="4" minlength="4" placeholder="YYYY"  [(ngModel)]=cardInfo.expiryYear
+              required></ion-input>
+            <ion-icon name="calendar" slot="end"></ion-icon>
+          </ion-item>
+        </ion-col>
+        <ion-col size="5">
+          <ion-item class="right">
+            <ion-input type="text" name="cvc" id="cvc" placeholder="Card CVV" maxlength="3" [(ngModel)]=cardInfo.cvc required></ion-input>
+            <ion-icon name="code" slot="end"></ion-icon>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-item>
+        <ion-input type="text" name="cardName" id="cardName" placeholder="Card Holder's Name" required></ion-input>
+        <ion-icon name="person" slot="end"></ion-icon>
+      </ion-item>
+      <ion-row>
+        <ion-col size="12" class="app-buttons">
+          <ion-button color="primary" expand="block" type="submit" size="large" [disabled]="!f.valid" class="btn-lg block">
+            Pay Now
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form> -->
+  </section>
+  
+  
+</div>
+
+</ion-content>

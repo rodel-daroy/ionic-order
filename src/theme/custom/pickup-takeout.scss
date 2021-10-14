@@ -1,0 +1,40 @@
+.page-pickup-takeout{
+    
+.main-title {
+    width: 100%;
+    text-align: center;
+    color: var(--ion-color-primary);
+    margin-top: 0px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .sub-title {
+    width: 100%;
+    text-align: center;
+    color: var(--ion-color-primary);
+    text-transform: uppercase;
+  }
+  .address-text {
+    width: 100%;
+    text-align: center;
+    line-height: 20px;
+    vertical-align: middle;
+  }
+  .pin-icon {
+    font-size: 22px;
+    margin-bottom: -4px;
+  }
+  
+  ion-datetime {
+    --padding-start: 0px;
+  }
+  
+  .select-label {
+    color: #8b8b8b;
+  }
+  ion-select {
+    --padding-start: 0px;
+    --padding-end: 4px;
+  }
+  
+}

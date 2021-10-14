@@ -1,0 +1,28 @@
+.page-thankyou{
+    background-color: white !important;
+    .thanks {
+      text-align: center;
+      margin: 0 auto;
+      
+      h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        color:var(--ion-color-primary);
+
+      }
+      p {
+        line-height: 2.5rem;
+        font-weight: 500;
+        font-size: 18px;
+      }
+    }
+
+      .continue-btn{
+        height: 4.6rem;
+        border-color: --ion-color-primary;
+        color: --ion-color-primary;
+        display: block;
+        margin: 0 auto;
+        padding: 19px;
+   }
+}

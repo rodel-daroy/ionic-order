@@ -1,0 +1,113 @@
+.page-checkout {
+    //background-image: url(assets/img/address-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+   
+  ion-item{
+    background: white;
+  }
+
+
+  .radio-list{
+    padding-top: 60px;
+  }
+
+  .card-type
+  {
+    padding: 0 1.8rem;
+    .col{ padding: 0; }
+    .radio-item{
+      border:1px solid rgba(0, 0, 0, 0.1)!important;
+      padding: 4px 10px;
+      margin-bottom: 1.2rem;
+      .radio{
+        margin-left: 13px!important;
+      }  
+    }
+    .radio-item.item-radio-checked{
+     border-color:  --ion-color-primary;
+     .label {
+      color:  --ion-color-primary;
+     }
+    }
+    img{
+        height: 34px;
+        width: 80px;
+    }
+    .item-inner{
+       border-bottom:0 !important;
+    }
+  } //card-type -end
+  .form-title{
+    font-weight: 600;
+  }
+  .payment{
+    margin: 0 19px;
+    background-color: white;
+  .form-data {
+    .col{padding: 0;}
+    .item{
+      border-bottom:1px solid #d4d4d4 !important;
+      border-left: 0!important;
+      border-right:0!important;
+      border-radius: 0!important;
+      margin: 0!important;
+      height: 52px!important;
+      padding-left: 0px;
+      font-size: 12px;
+      font-weight: 700;
+      ion-icon{
+          color: #a7a3a0;
+          padding: 5px 0 0 0;
+          margin: 0 8px;
+      }
+    } 
+  }
+  }
+
+  .total_label{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    position: fixed;
+    display: flex;
+    width: 100%;
+    font-size: large;
+    justify-content: center;
+    font-weight: 600;
+    --color: --ion-color-primary;
+  }
+
+  .btn-wrapper{
+    padding: 0 1.6rem;
+  }
+  .button{
+    margin-top: 1em;
+     }
+.card-row{
+  .col{
+    padding: 0;
+  }
+  .cvv-input{
+background: #ffffff;
+  }
+  .delete-btn{
+    background-color: transparent!important;
+    margin-top: 0;
+    box-shadow: none;
+    color: red;
+    font-size: 22px;
+  }
+}
+.check-item{
+ font-size: 15px;
+ font-weight: 600;
+ color: grey;
+}
+
+.powered-by-stripe-image{
+  max-width:50%;
+max-height:50%;
+}
+
+}

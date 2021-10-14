@@ -1,0 +1,47 @@
+.login-wrapper {
+  background: url("../../../assets/img/signin_bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: calc(env(safe-area-inset-top) + 15vh);
+  overflow: auto;
+}
+.p-text {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.guest-text {
+  margin-top: 15vh;
+}
+.signin-text {
+  margin: 0px;
+  margin-top: 5vh;
+  color:#fff;
+  text-align: center;
+  font-family: "Oswald";
+  font-weight: 600;
+  font-size: 16px;
+}
+.btn-wrapper {
+  width: 90%;
+  margin-top: 40vh;
+}
+.login-btn {
+  margin: 15px 0px;
+  border: 1px solid #707070;
+  text-transform: uppercase;
+}
+.apple-btn {
+  border: none;
+}
+
+ion-icon {
+  position: absolute;
+  left: 40px;
+}

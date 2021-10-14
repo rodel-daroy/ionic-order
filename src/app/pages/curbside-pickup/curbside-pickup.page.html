@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/tabs/cart"></ion-back-button>
+    </ion-buttons>
+    <img class="logo-img-only-back" src="assets/img/logo_svg.svg" />
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding page-curbside-pickup">
+  <h1 class="main-title">CURBSIDE PICKUP</h1>
+  <h4 class="sub-title">LOCATION</h4>
+  <div class="map-wrapper">
+    <div id="map" #map></div>
+  </div>
+  
+  <p class="address-text">
+    <ion-icon name="car-sharp" color ="primary"></ion-icon>
+    {{distance}}
+    <ion-icon name="time-sharp" color ="primary"></ion-icon>
+    {{duration}} Away
+  </p>
+
+  <p class="address-text">
+    <ion-icon
+      class="pin-icon"
+      color="primary"
+      src="assets/img/md-pin.svg"
+    ></ion-icon>
+    {{address[0].name}}
+  </p>
+
+  <p class="address-text">
+    <ion-icon
+      class="pin-icon"
+      color="primary"
+      src="assets/img/md-pin.svg"
+    ></ion-icon>
+    {{address[0].address}}
+  </p>
+  
+    <form (ngSubmit)="checkOut()" #f1="ngForm">
+    <ion-list class="form-data">
+       <ion-item lines="none" class="form-item">
+       <ion-label class="select-label">PICKUP TIME</ion-label>
+          <ion-datetime
+            display-format="h:mm A"
+            picker-format="h:mm A"
+            value="{{currentTime}}"
+            name="pickupTime"
+            id="pickupTime"
+            [(ngModel)] = "pickupDetails.pickupTime"
+            minuteValues="0,10,20,30,40,50"
+            required
+          ></ion-datetime>
+        </ion-item>
+      <ion-item lines="none" class="form-item">
+        <ion-input placeholder="NAME" name="name" id="name" [(ngModel)]="pickupDetails.name" required></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="form-item">
+        <ion-input placeholder="PHONE NUMBER" name="mobileNo" id="mobileNo" [(ngModel)]="pickupDetails.mobileNo" required></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="form-item">
+        <ion-input placeholder="MAKE / MODEL" name="vehicleModel" id="vehicleModel" [(ngModel)]="pickupDetails.vehicleModel" required></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="form-item">
+        <ion-input placeholder="COLOR" name="vehicleColor" id="vehicleColor" [(ngModel)]="pickupDetails.vehicleColor" required></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button
+          color="primary"
+          expand="block"
+          size="large"
+          class="btn-lg block"
+          type="submit"
+          [disabled]="!f1.valid"
+        >
+          CHECKOUT
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

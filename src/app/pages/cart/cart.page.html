@@ -1,0 +1,170 @@
+<ion-header>
+  <ion-toolbar class="cart-toolbar">
+    <img class="logo-img-tabs" src="assets/img/logo_svg.svg">
+    <ion-buttons slot="end" >
+      <ion-button class="cart-btn" (click)="goToCartPage()">
+        <ion-icon color="dark" src="assets/img/cart-img.svg"  class="cart"></ion-icon>
+        <ion-badge *ngIf="noOfItems > 0" color="danger" class="carts">{{noOfItems}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class='page-cart'>
+  <ion-row class="btn-row" *ngIf="noOfItems != 0">
+    <ion-col size="12" class="btn-col">
+      <ion-label  class="lbl-top" expand="block" floating >
+        YOUR ORDER
+      </ion-label>
+    </ion-col>
+  </ion-row>
+
+  <div class="empty-list" *ngIf="noOfItems == 0">
+    <ion-icon color="dark" src="assets/img/cart-img.svg" class="empty-cart"></ion-icon>
+    <p>
+      Your Cart Is Empty
+    </p>
+    <ion-row align-items-center>
+      <ion-col size="8" offset="2">
+        <ion-button class="empty-btn" size="small"  (click)="navigateHome()">
+          Add Items
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </div>
+  <ion-grid>
+  <div *ngIf="noOfItems != 0">
+    <ion-list class="cart-list" *ngFor="let cartItem of cartItems ; let i = index ">
+      <!-- item-list -->
+      <ion-item class="cart-item">
+        <!-- col-for item-image and details -->
+        <ion-row class="cart-item-row">
+          <ion-col size="4">
+                <img class="thumb-img" src={{cartItem?.item?.thumb}} alt="{{cartItem?.item?.title}}" >
+          </ion-col>
+          <ion-col size="8" style="padding-top: 0px;">
+              <ion-label>
+                <h3 text-wrap>{{cartItem?.item?.title}} - {{cartItem?.item.price?.pname}}</h3>
+                <p class="item-detail" text-wrap>
+                  <span *ngIf="cartItem.item?.price?.specialPrice == undefined" class="item-price">
+                    {{currency}}{{cartItem?.item?.price.value | number:'.2-2'}} X {{cartItem?.item?.itemQunatity}}</span>
+                  <span *ngIf="cartItem.item?.price?.specialPrice != undefined" class="item-price">
+                    {{currency}}{{cartItem?.item?.price?.specialPrice | number:'.2-2'}}*{{cartItem?.item?.itemQunatity}}</span>
+                  =
+                  {{currency}}{{cartItem?.itemTotalPrice * cartItem?.item?.itemQunatity}}
+                </p>
+                <p class="item-detail" text-wrap>Extra: {{currency}}{{cartItem?.extraPrice}}</p>
+                <p class="item-detail" *ngIf="cartItem.item.extraOption[0]" text-wrap>Add On: {{cartItem?.item.extraOption[0]?.name}}</p>
+              </ion-label>
+              <ion-row class="count-row">
+                <!-- row-for count item -->
+                
+                <ion-col size="10" style ="padding-left: 0px">
+                  <div class="count" >
+                    <span class="item-count item-count-decrease" (click)="decreaseCartItem(i)">
+                      -
+                    </span>
+                    <span class="show-count"> {{cartItem?.item?.itemQunatity}}
+                    </span>
+                    <span class="item-count item-count-increase" (click)="increaseCartItem(i)">
+                      +
+                    </span>
+                  </div>
+                  
+                </ion-col>
+                <ion-col size="2" class="ion-text-right">
+                    <div>
+                        <ion-icon name="trash" (click)="removeCartItem(i)"></ion-icon>
+                    </div>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+      </ion-item>
+
+    </ion-list>
+  
+
+    
+
+    <ion-row class="price-details">
+
+      <ion-col size="12" class="calculate" >
+        <ion-row>
+          <ion-col size="4">
+            <p class="bill-detail">Order Type</p>
+          </ion-col>
+          <ion-col size="8">
+            <ion-item class="select-item">
+              <ion-label>Type</ion-label>
+              <ion-select [(ngModel)]="orderInfo.orderType" value="{{orderInfo.orderType}}" (ionChange)="calculatePrice()">
+                <ion-select-option value="Delivery">Delivery</ion-select-option>
+                <ion-select-option value="Curbside">Curbside</ion-select-option>
+                <ion-select-option value="Takeout">Takeout</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <p class="bill-detail">Apply Coupon</p>
+          </ion-col>
+          <ion-col size="8">
+            <ion-item class="select-item">
+              <ion-label>Promo Code</ion-label>
+              <ion-select [(ngModel)]="couponDiscount" (ionChange)="calculatePrice()">
+                <ion-select-option *ngFor="let coupon of coupons" value="{{coupon?.value}}">{{coupon?.name}}
+                  ({{coupon?.value}}%)</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <p class="coupon-applied" *ngIf="deductedPrice">Coupon Applied.</p>
+          <p class="bill-detail">
+            Subtotal 
+            <span><b>{{currency}}{{subTotalPrice | number:'.2-2'}}</b></span>
+          </p>
+          <p class="bill-detail">
+            Tax
+            <span><b> + {{currency}}{{taxAmount | number:'.2-2'}}</b></span>
+          </p>
+          <p class="bill-detail" *ngIf="orderInfo.orderType =='Delivery'">
+            Delivery Charge 
+            <span><b> + {{currency}}{{deliveryCharge | number:'.2-2'}}</b></span>
+          </p>
+          <p class="bill-detail">
+            Service Charge
+            <span><b> + {{currency}}{{serviceChargeAmount | number:'.2-2'}}</b></span>
+          </p>
+          
+          <span *ngIf="deductedPrice">
+            <p class="bill-detail">
+              Coupon Discount 
+              <span> - {{currency}}{{deductedPrice | number:'.2-2'}}</span>
+            </p>
+          </span>
+          <hr>
+          <p class="cart-total" >
+            <strong>Total </strong>
+            <span class="price">{{currency}}{{grandTotal | number:'.2-2'}}</span>
+          </p>
+        
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button *ngIf="ifRestaurantOpen" color="primary" expand="block" size="large" class="btn-lg block" (click)="saveOrderInfo()">
+          CHECKOUT
+        </ion-button>
+        <ion-label *ngIf="!ifRestaurantOpen" class="label-cart">Restaurant is not Accepting Orders at the Moment.</ion-label>
+        <ion-button *ngIf="!ifRestaurantOpen" color="primary" expand="block" size="large" class="btn-lg block" [disabled]="true">
+          CHECKOUT
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-grid>
+  
+
+</ion-content>

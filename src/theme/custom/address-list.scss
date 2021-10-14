@@ -1,0 +1,18 @@
+.page-address-list {
+    .main-title {
+        width: 100%;
+        text-align: center;
+        color: var(--ion-color-primary);
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+    
+      .add-address{
+        width: 100%;
+        justify-items: center;
+        //align-items: center;
+        color: var(--ion-color-primary);
+        text-transform: uppercase;
+      }
+}

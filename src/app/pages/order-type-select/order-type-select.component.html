@@ -1,0 +1,40 @@
+<img class="logo-img-no-tools" src="assets/img/logo_svg.svg"/>
+<ion-content class='component-order-type-select'>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center ion-margin-vertical">
+        <h1 class="main-title">CHOOSE ORDER TYPE</h1>  
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center ion-margin-vertical ordertype-col">
+        <div>
+          <img src="assets/icon/pickup.svg" (click)="updateOrderType(ORDER_TYPE_TAKEOUT)" />
+        </div>
+        <div>
+          PICKUP/TAKEOUT
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center ion-margin-vertical ordertype-col">
+        <div>
+          <img src="assets/icon/curbside.svg" (click)="updateOrderType(ORDER_TYPE_CURBSIDE)" />
+        </div>
+        <div>
+          CURBSIDE
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center ion-margin-vertical ordertype-col">
+        <div>
+          <img src="assets/icon/delivery.svg" (click)="updateOrderType(ORDER_TYPE_DELIVERY)" />
+        </div>
+        <div>
+          DELIVERY
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

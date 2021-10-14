@@ -1,0 +1,7 @@
+{
+  "name": "Order Direct User App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
